@@ -37,7 +37,7 @@
   <style type="text/css">
     
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#00cccc,#330033);
     }
   </style>
   
@@ -62,11 +62,11 @@
       
 
 
-<div class="overlay" style="background: #00E5EE;"></div>
+<div class="overlay" style="background: transparent;"></div> 
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/img/header.jpg" class="js-avatar">
+			<img src="/img/headpicture.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 			<h1 class="header-author"><a href="/">Little cookie</a></h1>
@@ -111,19 +111,37 @@
 				
 			</div>
 		
-			
-			
-			
-			
-			<div>
-				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86" src="//music.163.com/outchain/player?type=2&id=https://music.163.com/song?id=28312036&amp;userid=1923748249&auto=1&height=66"></iframe>
-			</div>
-			
-				
-				<p style="font-size: 12px;">这是小饼干的音乐嗷<p>
-			
 		
-		</nav>
+	<!-- 《左侧边栏添加--APlayer音乐播放器：详见：https://aplayer.js.org/#/zh-Hans/ -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+
+    <div id="aplayer" style="text-align:left"></div>
+    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/color-thief-don@2.0.2/src/color-thief.js"></script>
+
+    <!-- 为方便修改，添加一个配置文件，修改时直接修改配置文件即可。 -->
+    <script type="text/javascript" src="/js/APlayer_config.js"></script>
+
+    <!-- 根据封面自适应主题色，主要是作用于进度条 -->
+    <script type="text/javascript">
+          const colorThief = new ColorThief();
+          const setTheme = (index) => {
+            if (!ap.list.audios[index].theme) {
+              colorThief.getColorAsync(ap.list.audios[index].cover, function(color) {
+                ap.theme(`rgb(${color[0]}, ${color[1]}, ${color[2]})`, index);
+              });
+            }
+          };
+          setTheme(ap.list.index);
+          ap.on('listswitch', (data) => {
+            setTheme(data.index);
+          });       
+    </script>
+
+<!-- 左侧边栏添加--APlayer音乐播放器》 -->
+
+	</nav>
 	</header>		
 </div>
 
@@ -138,7 +156,7 @@
       
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #00E5EE"></div>
+  	<div class="overlay js-overlay" style="background: transparent"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -146,7 +164,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				<a href="/">
-					<img src="/img/header.jpg" class="js-avatar">
+					<img src="/img/headpicture.jpg" class="js-avatar">
 				</a>
 			</div>
 			<hgroup>
@@ -487,10 +505,10 @@
   var titleTime;
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
-      document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+      document.title = "快来看看我的博客叭~ " + originTitle;
       clearTimeout(titleTime);
     } else {
-      document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+      document.title = "仔细瞧瞧，看看有没有什么发现~ " + originTitle;
       titleTime = setTimeout(function () {
         document.title = originTitle;
       }, 2000);
@@ -626,6 +644,26 @@
               </a>
             </li>
           
+            <li class="search-li">
+              <a href="https://www.yansheng.xyz/" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                荷塘月色
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://music.liuzhijin.cn/" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                音乐直链搜索
+              </a>
+            </li>
+          
         </ul>
   		
     	</section>
@@ -635,7 +673,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">I have a little girlfriend, her name is LittleYang.<br><br>I will always be loyal to her♥<br><br><br>Frome the Littlecookie</div>
+  	  		<div class="aboutme-wrap" id="aboutme">I have a little girlfriend, her name is LittleYang.<br><br>   I will always be loyal to her♥<br><br><br>   Frome the Littlecookie</div>
   	  	
     	</section>
     
