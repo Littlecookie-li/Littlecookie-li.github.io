@@ -116,8 +116,8 @@
           var data = res.list[j].arr;
           var liTmpl = "";
           for (var i = 0, len = data.link.length; i < len; i++) {
-            var minSrc = 'https://github.com/Littlecookie-li/Littlecookie-li.github.io/tree/master/photos/min_photos/' + data.link[i];
-            var src = 'https://github.com/Littlecookie-li/Littlecookie-li.github.io/tree/master/photos/photos/' + data.link[i];
+            var minSrc = 'https://raw.githubusercontent.com/Littlecookie-li/Blog-Back-UP/master/min_photos/' + data.link[i];
+            var src = 'https://raw.githubusercontent.com/Littlecookie-li/Blog-Back-UP/master/photos/' + data.link[i];
             var type = data.type[i];
             var target = src + (type === 'video' ? '.mp4' : '.jpg');
             src += '';
